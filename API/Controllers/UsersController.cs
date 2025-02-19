@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;//n.Controllers;
-[Authorize]
+// [Authorize]
 public class UsersController(DataContext context) : BaseApiController
 {
     [AllowAnonymous]
