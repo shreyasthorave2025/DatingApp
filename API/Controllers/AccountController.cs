@@ -10,24 +10,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
-public class AccountController(DataContext context,ITokenService tokenService) : BaseApiController
+public class AccountController(DataContext context, ITokenService tokenService) : BaseApiController
 {
     [HttpPost("Register")]
     public async Task<ActionResult<AppUser>> Register(RegisterDto registerDto)
     {
-        if (await UserExists(registerDto.Username))
-            return BadRequest("Username is taken");
+        return Ok();
+        // if (await UserExists(registerDto.Username))
+        //     return BadRequest("Username is taken");
 
-        using var hmac = new HMACSHA512();
-        var user = new AppUser
-        {
-            UserName = registerDto.Username.ToLower(),
-            PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-            PasswordSalt = hmac.Key
-        };
-        context.Users.Add(user);
-        await context.SaveChangesAsync();
-        return user;
+        // using var hmac = new HMACSHA512();
+        // var user = new AppUser
+        // {
+        //     UserName = registerDto.Username.ToLower(),
+        //     PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
+        //     PasswordSalt = hmac.Key
+        // };
+        // context.Users.Add(user);
+        // await context.SaveChangesAsync();
+        // return user;
     }
     [HttpPost("Login")]
     public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
