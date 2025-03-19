@@ -1,4 +1,3 @@
-<!-- <h1>{{member?.knownAs}}</h1> -->
 @if (member) {
 <div class="row">
     <div class="col-4">
@@ -16,11 +15,11 @@
                 </div>
                 <div>
                     <strong>Last Active:</strong>
-                    <p>{{member.lastActive}}</p>
+                    <p>{{member.lastActive |timeago }}</p>
                 </div>
                 <div>
                     <strong>Member Since:</strong>
-                    <p>{{member.created}}</p>
+                    <p>{{member.created |date:'dd MMM yyyy' }}</p>
                 </div>
             </div>
             <div class="card-footer">
